@@ -1,143 +1,712 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Home | Charity template</title>
-  <meta name="description" content="Official site of Stichting MijnMissie, helping children in need.">
-  <meta name="keywords" content="Page-specific keywords">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="shortcut icon" href="static/images/favicons/favicon.png" type="image/x-icon">
-  <link rel="apple-touch-icon" href="static/images/favicons/apple-touch-icon.png">
-  <link rel="apple-touch-icon-precomposed" href="static/images/favicons/apple-touch-icon-precomposed.png">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="static/css/screen.min.css">
-  <link rel="stylesheet" href="static/css/custom.min.css">
+  <meta charset="UTF-8" />
+  <title>A New Hope – Charity Helping People in Need</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="A New Hope – a charity dedicated to helping people in need with food, shelter, education and emergency support."
+  />
+
+  <!-- If you already have CSS in /static/css, you can remove this style block
+       and keep your existing <link> tags instead. -->
+  <style>
+    :root {
+      --primary: #1e88e5;
+      --primary-dark: #1565c0;
+      --accent: #ffb300;
+      --bg: #f5f7fb;
+      --text: #222;
+      --muted: #666;
+      --radius: 10px;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header / Nav */
+    header {
+      background: #fff;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .logo span {
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-dark);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1.3rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: transform 0.1s ease, box-shadow 0.1s ease,
+        background 0.1s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      color: var(--primary-dark);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(21, 101, 192, 0.06);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 3rem 0 2.5rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.75rem;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero h1 span {
+      color: var(--primary-dark);
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-slogan {
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.8rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-note {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .hero-visual {
+      position: relative;
+      padding: 1.5rem;
+      border-radius: 20px;
+      background: radial-gradient(circle at top left, #e3f2fd, #ffffff);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-visual h2 {
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      font-size: 0.9rem;
+    }
+
+    .impact-card {
+      padding: 0.8rem;
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .impact-card strong {
+      display: block;
+      font-size: 1.1rem;
+    }
+
+    .impact-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .badge-live {
+      position: absolute;
+      top: 0.9rem;
+      right: 1rem;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: #e8f4ff;
+      color: var(--primary-dark);
+      border: 1px solid rgba(21, 101, 192, 0.15);
+    }
+
+    /* Sections */
+    section {
+      padding: 2.2rem 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-heading h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    /* What We Do */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 1.3rem 1.2rem;
+      box-shadow: var(--shadow);
+      font-size: 0.95rem;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.12rem 0.5rem;
+      border-radius: 999px;
+      background: #e3f2fd;
+      color: var(--primary-dark);
+      margin-bottom: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Get Help */
+    .help-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .help-box {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 1.4rem 1.3rem;
+      box-shadow: var(--shadow);
+      font-size: 0.95rem;
+    }
+
+    .help-box h3 {
+      margin-bottom: 0.6rem;
+      font-size: 1.05rem;
+    }
+
+    .help-box ul {
+      list-style: none;
+      margin-top: 0.4rem;
+    }
+
+    .help-box li {
+      padding-left: 1.1rem;
+      position: relative;
+      margin: 0.25rem 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .help-box li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primary-dark);
+    }
+
+    .help-hint {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.8rem;
+    }
+
+    .contact-line {
+      margin-top: 0.5rem;
+      font-size: 0.93rem;
+    }
+
+    .contact-line strong {
+      color: var(--primary-dark);
+    }
+
+    /* How To Help */
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .icon-bullet {
+      font-size: 1.6rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #111827;
+      color: #e5e7eb;
+      padding: 2rem 0 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-brand {
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-slogan {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9ca3af;
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      color: #9ca3af;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      margin-top: 1.3rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid rgba(156, 163, 175, 0.4);
+      font-size: 0.8rem;
+      color: #9ca3af;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner,
+      .help-layout,
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2.2rem;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .nav-links {
+        display: none; /* keep it simple on small screens */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .grid-3,
+      .help-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">
+        <!-- Replace 'HopeAid' with your charity name if you want -->
+        HopeAid
+        <span>A New Hope</span>
+      </a>
 
-  <header class="page-header">
-    <div class="page-header__inner">
-      <h1 class="logo page-header__logo">My Charity<span>Making more todays</span></h1>
-      <nav class="nav page-header__nav">
-        <a class="page-header__nav-link page-header__nav-link_selected">Home</a>
-        <a class="page-header__nav-link" href="#">About Us</a>
-        <a class="page-header__nav-link" href="projects.html">Projects</a>
-        <a class="page-header__nav-link" href="#">Blog</a>
-        <a class="page-header__nav-link" href="#">Events</a>
-        <a class="page-header__nav-link" href="#">Gallery</a>
-        <a class="page-header__nav-link" href="#">Contact Us</a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#what-we-do">What we do</a>
+        <a href="#get-help">Get help</a>
+        <a href="#support">How to help</a>
       </nav>
+
+      <div class="nav-cta">
+        <button class="btn btn-ghost" onclick="document.getElementById('get-help').scrollIntoView({behavior:'smooth'})">
+          I need help
+        </button>
+        <button class="btn btn-primary" onclick="document.getElementById('support').scrollIntoView({behavior:'smooth'})">
+          Donate
+        </button>
+      </div>
     </div>
   </header>
 
-  <section class="promo">
-    <div class="promo__inner">
-      <h1 class="promo__title">Welcome to my charity</h1>
-      <h2 class="promo__slogan">Hallo ik ben Nada hihihi</h2>
-      <a class="promo__button" href="#">Donate now</a>
-    </div>
-  </section>
+  <!-- HERO -->
+  <main>
+    <section class="hero" id="about">
+      <div class="container hero-inner">
+        <div>
+          <div class="eyebrow">Charity for people in need</div>
+          <h1>
+            Together we bring
+            <span>a new hope</span>
+            to people in crisis.
+          </h1>
+          <p class="hero-tagline">
+            We provide food, shelter, medical care and long-term support for
+            people and families facing hardship – locally and abroad.
+          </p>
+          <div class="hero-slogan">A new hope</div>
 
-  <section class="services">
-    <div class="services__goals">
-      <h1 class="logo services__logo">My Charity<span>Making more todays</span></h1>
-    </div>
+          <div class="hero-cta">
+            <button class="btn btn-primary" onclick="document.getElementById('support').scrollIntoView({behavior:'smooth'})">
+              Donate now
+            </button>
+            <button class="btn btn-ghost" onclick="document.getElementById('what-we-do').scrollIntoView({behavior:'smooth'})">
+              Learn more
+            </button>
+          </div>
 
-    <div class="services__donate">
-      <a class="services__title" href="#">Donate Now!</a>
-      <p class="services__text">Lorem Ipsum is simply dummy text.</p>
-    </div>
-
-    <div class="services__news">
-      <div class="services__subscribe">
-        <h1 class="services__title">Sign up to newsletter</h1>
-        <form class="subscribe-form" action="#" method="post">
-          <input id="email__subscribe" type="text" name="email" value="Enter your email">
-          <label for="#email__subscribe"></label>
-          <input type="submit" value="Subscribe">
-        </form>
-        <p class="services__text">Lorem Ipsum is simply dummy text of the printing and typeset ing ustry. Lorem Ipsum has been the industry's standard dummy text</p>
-      </div>
-    </div>
-
-    <div class="services__soc">
-      <a class="services__icon" href="#">Like Now!</a>
-    </div>
-  </section>
-
-  <section class="events">
-    <h1 class="events__title">Our Events</h1>
-    <div class="events__inner">
-
-      <div class="event">
-        <h2 class="event__date"><span>18</span>October</h2>
-        <h3 class="event__title">Lorem Ipsum is simply ik ben Nada hihihi</h3>
-        <p class="event__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard unchanged</p>
-        <a class="event__button" href="#">More</a>
-      </div>
-
-      <div class="event">
-        <h2 class="event__date"><span>22</span>October</h2>
-        <h3 class="event__title">Lorem Ipsum is simply</h3>
-        <p class="event__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard unchanged</p>
-        <a class="event__button" href="#">More</a>
-      </div>
-
-      <div class="event">
-        <h2 class="event__date"><span>28</span>October</h2>
-        <h3 class="event__title">Lorem Ipsum is simply</h3>
-        <p class="event__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard unchanged</p>
-        <a class="event__button" href="#">More</a>
-      </div>
-
-    </div>
-  </section>
-
-  <footer class="page-footer">
-    <div class="page-footer__inner">
-      <nav class="nav page-footer__nav">
-        <a class="page-footer__nav-link page-footer__nav-link_selected">Home</a>
-        <a class="page-footer__nav-link" href="#">About Us</a>
-        <a class="page-footer__nav-link" href="#">Projects</a>
-        <a class="page-footer__nav-link" href="#">Blog</a>
-        <a class="page-footer__nav-link" href="#">Events</a>
-        <a class="page-footer__nav-link" href="#">Gallery</a>
-        <a class="page-footer__nav-link" href="#">Contact Us</a>
-      </nav>
-
-      <div class="widgets">
-        <div class="widget widget_social">
-          <h3 class="widget__title">Follow Us</h3>
-          <a class="widget__icon widget__icon_fb" href="#">Facebook</a>
-          <a class="widget__icon widget__icon_tw" href="#">Twitter</a>
-          <a class="widget__icon widget__icon_gplus" href="#">Google+</a>
+          <p class="hero-note">
+            Your donation today helps provide emergency support within hours and
+            long-term guidance for months and years.
+          </p>
         </div>
 
-        <div class="widget widget_feed">
-          <h3 class="widget__title">News letter</h3>
-          <form class="subscribe-form" action="#" method="post">
-            <input id="email-subscribe" type="text" name="email" value="Enter your email">
-            <label for="#email-subscribe"></label>
-            <input type="submit" value="Subscribe">
-          </form>
+        <aside class="hero-visual" aria-label="Impact highlight">
+          <div class="badge-live">Real impact, every day</div>
+          <h2>Last year’s impact</h2>
+          <div class="impact-grid">
+            <div class="impact-card">
+              <strong>32,500+</strong>
+              <span class="impact-label">Meals provided</span>
+            </div>
+            <div class="impact-card">
+              <strong>4,100+</strong>
+              <span class="impact-label">People sheltered</span>
+            </div>
+            <div class="impact-card">
+              <strong>1,800+</strong>
+              <span class="impact-label">Emergency kits</span>
+            </div>
+            <div class="impact-card">
+              <strong>95%</strong>
+              <span class="impact-label">Funds to programs</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- WHAT WE DO -->
+    <section id="what-we-do">
+      <div class="container">
+        <div class="section-heading">
+          <h2>What we do</h2>
+          <p>
+            We focus on practical, direct support – and we stay until people are
+            back on their feet.
+          </p>
         </div>
 
-        <div class="widget widget_contact">
-          <h3 class="widget__title">Contact Us</h3>
-          <p class="widget__text">Adress</p>
-          <p class="widget__text">New Street</p>
-          <p class="widget__text">ph :xxxxx-xxx-xxx</p>
+        <div class="grid-3">
+          <article class="card">
+            <div class="pill">Emergency relief</div>
+            <h3>Food & safe shelter</h3>
+            <p>
+              We provide warm meals, clean water and temporary shelter for
+              people who suddenly find themselves with nowhere else to go.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="pill">Health & care</div>
+            <h3>Medical & mental support</h3>
+            <p>
+              Our local partners and volunteers help with basic medical care,
+              medicine, trauma support and referrals to specialised services.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="pill">Future</div>
+            <h3>Education & stability</h3>
+            <p>
+              We support children and adults with school materials, training,
+              and coaching so they can rebuild their lives with dignity and
+              independence.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GET HELP -->
+    <section id="get-help">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Need help right now?</h2>
+          <p>
+            If you or someone you know is in urgent need, we’re here to listen
+            and support – free of charge.
+          </p>
+        </div>
+
+        <div class="help-layout">
+          <div class="help-box">
+            <h3>Who we can help</h3>
+            <ul>
+              <li>Individuals and families without safe housing</li>
+              <li>People struggling to afford food, medicine or hygiene items</li>
+              <li>Refugees and displaced people in vulnerable situations</li>
+              <li>Anyone affected by sudden crisis, disaster or conflict</li>
+            </ul>
+            <p class="help-hint">
+              If you’re not sure whether we can help, please contact us anyway.
+              If we can’t, we’ll try to connect you with someone who can.
+            </p>
+          </div>
+
+          <div class="help-box">
+            <h3>Contact us</h3>
+            <!-- Replace email / phone / address with real data -->
+            <p class="contact-line">
+              <strong>Email:</strong> help@anewhope.org
+            </p>
+            <p class="contact-line">
+              <strong>Phone (24/7):</strong> +00 123 456 789
+            </p>
+            <p class="contact-line">
+              <strong>Visit:</strong> Main Support Center, Hope Street 12,
+              YourCity
+            </p>
+            <p class="help-hint">
+              We respect your privacy. You can contact us anonymously and we
+              will never share your story without your permission.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO HELP -->
+    <section id="support">
+      <div class="container">
+        <div class="section-heading">
+          <h2>How you can help</h2>
+          <p>
+            Every contribution – big or small – becomes part of
+            <strong>a new hope</strong> for someone in need.
+          </p>
+        </div>
+
+        <div class="help-grid">
+          <article class="card">
+            <div class="icon-bullet">💳</div>
+            <h3>Donate</h3>
+            <p>
+              Your donation funds direct aid: food, shelter, medicine and
+              long-term support. You can choose a one-time or monthly gift.
+            </p>
+            <p class="help-hint">
+              Example: €25 can provide a week of food for a family.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon-bullet">🤝</div>
+            <h3>Volunteer</h3>
+            <p>
+              Join our team of volunteers. Help with distributions, local
+              events, translation, transport, or specialised skills like IT or
+              communications.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon-bullet">📢</div>
+            <h3>Spread the word</h3>
+            <p>
+              Share our mission online or in your community. The more people
+              know about our work, the more support we can give.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">HopeAid – A New Hope</div>
+          <div class="footer-slogan">A new hope for people in need</div>
+          <p>
+            We are an independent, non-profit organisation committed to helping
+            people in vulnerable situations through practical support and
+            long-term guidance.
+          </p>
+        </div>
+        <div class="footer-links">
+          <strong>Get in touch</strong>
+          <a href="mailto:info@anewhope.org">info@anewhope.org</a>
+          <span>+00 123 456 789</span>
+          <span>Hope Street 12, YourCity, YourCountry</span>
         </div>
       </div>
 
-      <div class="copyright">
-        My Charity © 2013 Allright Reserved<br>
-        Designed by cssauthor.com | Coded by orlovmax.com
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> HopeAid. All rights reserved.</span>
+        <span>Built with compassion – “A New Hope”.</span>
       </div>
     </div>
+
+    <script>
+      document.getElementById("year").textContent =
+        new Date().getFullYear();
+    </script>
   </footer>
-
 </body>
 </html>
